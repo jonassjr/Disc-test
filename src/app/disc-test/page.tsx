@@ -2,20 +2,45 @@
 
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Questions, questions } from "./questions"
+import { useRouter } from "next/navigation"
+import { Loader2 } from "lucide-react"
+import { useQuiz } from "@/contexts/QuizContext"
 
 export default function DiscTest() {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null)
-  const currentQuestion = 12
-  const totalQuestions = 40
-  const progress = (currentQuestion / totalQuestions) * 100
+  const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(0)
+
+  const { responses, setResponses } = useQuiz()
+
+  const router = useRouter()
+
+  const currentOption: Questions | null = currentOptionIndex < questions.length ? questions[currentOptionIndex] : null;
+
+  const progress = ((currentOptionIndex) / questions.length) * 100
+
+  const handleSelectedOption = (dimension: string) => {
+    setResponses(prevResponses => {
+      return [...prevResponses, dimension]
+    })
+
+    if (currentOptionIndex < questions.length) {
+      setCurrentOptionIndex((prev) => prev + 1)
+    }
+  }
+
+  useEffect(() => {
+    if (currentOptionIndex === questions.length) {
+      router.push("/results")
+    }
+  }, [currentOptionIndex])
 
   return (
     < main className="w-full min-h-screen grid place-content-center" >
       <section className="w-[800px] h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
         <div className="space-y-2">
           <div className="flex justify-between items-center text-sm text-muted-foreground">
-            <span>{currentQuestion}/{totalQuestions}</span>
+            <span>{currentOptionIndex}/{questions.length}</span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
@@ -30,21 +55,23 @@ export default function DiscTest() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {["Energético", "Sociável", "Controlado", "Atencioso"].map((option) => (
+            {currentOption?.options.map((option) => (
               <Button
                 variant={"outline"}
-                key={option}
-                className={`p-9 cursor-pointer transition-all hover:border-primary ${selectedOption === option
-                  ? "border border-primary bg-primary/5 "
-                  : "border border-border bg-card hover:bg-accent "
-                  }`}
-                onClick={() => setSelectedOption(option)}
+                key={option.id}
+                className={`p-9 cursor-pointer transition-all hover:border-primary `}
+                onClick={() => handleSelectedOption(option.dimension)}
               >
-                {option}
+                {option.text}
               </Button>
             ))}
 
           </div>
+          {!currentOption &&
+            <div className="grid place-content-center">
+              <Loader2 className="animate-spin 2s" size={36} />
+            </div>
+          }
         </div>
       </section>
     </main >
