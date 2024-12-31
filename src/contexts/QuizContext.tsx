@@ -14,7 +14,7 @@ interface QuizProviderProps {
 }
 
 export function QuizProvider({ children }: QuizProviderProps) {
-  const [responses, setResponses] = useState<string[]>([''])
+  const [responses, setResponses] = useState<string[]>([])
 
   return (
     <QuizContext.Provider value={{ responses, setResponses }}>

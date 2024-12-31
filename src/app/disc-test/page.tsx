@@ -11,7 +11,10 @@ import { useQuiz } from "@/contexts/QuizContext"
 export default function DiscTest() {
   const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(0)
 
+  // const { responses, setResponses } = useQuiz()
+  // const [responses, setResponses] = useState<string[]>([])
   const { responses, setResponses } = useQuiz()
+
 
   const router = useRouter()
 
@@ -30,13 +33,15 @@ export default function DiscTest() {
   }
 
   useEffect(() => {
+
     if (currentOptionIndex === questions.length) {
       router.push("/results")
     }
+
   }, [currentOptionIndex])
 
   return (
-    < main className="w-full min-h-screen grid place-content-center" >
+    <main className="w-full min-h-screen grid place-content-center">
       <section className="w-[800px] h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
         <div className="space-y-2">
           <div className="flex justify-between items-center text-sm text-muted-foreground">
@@ -44,36 +49,46 @@ export default function DiscTest() {
           </div>
           <Progress value={progress} className="h-2" />
         </div>
-        <div className="space-y-12">
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Selecione o adjetivo que melhor descreve você!
-            </h1>
-            <p className="text-muted-foreground">
-              Mesmo que você se identifique com mais de um, escolha o que mais se encaixa.
-            </p>
-          </div>
+        {currentOption ? (
+          <div className="space-y-12">
+            <div className="space-y-1">
+              <h1 className="text-2xl font-bold tracking-tight text-foreground">
+                Selecione o adjetivo que melhor descreve você!
+              </h1>
+              <p className="text-muted-foreground">
+                Mesmo que você se identifique com mais de um, escolha o que mais se encaixa.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {currentOption?.options.map((option) => (
-              <Button
-                variant={"outline"}
-                key={option.id}
-                className={`p-9 cursor-pointer transition-all hover:border-primary `}
-                onClick={() => handleSelectedOption(option.dimension)}
-              >
-                {option.text}
-              </Button>
-            ))}
+            <div className="pt-10 grid grid-cols-1 md:grid-cols-4 gap-4">
+              {currentOption?.options.map((option) => (
+                <Button
+                  variant={"outline"}
+                  key={option.id}
+                  className={`p-9 cursor-pointer transition-all hover:border-primary `}
+                  onClick={() => handleSelectedOption(option.dimension)}
+                >
+                  {option.text}
+                </Button>
+              ))}
 
+            </div>
           </div>
-          {!currentOption &&
-            <div className="grid place-content-center">
+        ) : (
+          <div className="space-y-12">
+            <div className="space-y-1">
+              <h1 className="text-2xl font-bold tracking-tight text-foreground">
+                Gerando resultados!
+              </h1>
+              <p className="text-muted-foreground">Analisando seu perfil DISC...</p>
+            </div>
+
+            <div className="h-full grid place-content-center">
               <Loader2 className="animate-spin 2s" size={36} />
             </div>
-          }
-        </div>
-      </section>
+          </div>)
+        }
+      </section >
     </main >
   )
 }

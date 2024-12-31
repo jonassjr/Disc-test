@@ -9,22 +9,21 @@ import { useState } from "react"
 const navLinks = [
   {
     id: 1,
-    name: 'Resultado',
-    href: '#resultado'
-
-  },
-  {
-    id: 2,
-    name: 'Artigos',
-    href: '#artigos'
-
-  },
-  {
-    id: 3,
     name: 'Sobre',
-    href: '#sobre'
-
+    href: '#about'
   }
+  // {
+  //   id: 2,
+  //   name: 'Resultado',
+  //   href: '#resultado'
+
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Artigos',
+  //   href: '#artigos'
+
+  // },
 ]
 
 export function Header() {
@@ -75,9 +74,11 @@ export function Header() {
         <div className="flex items-center space-x-4">
           <nav className="flex items-center space-x-2">
             <ModeToggle />
-            <Button variant="test" size="icon">
-              <Github />
-            </Button>
+            <Link href="https://github.com/" target="_blank" className="flex items-center space-x-2">
+              <Button variant="test" size="icon">
+                <Github />
+              </Button>
+            </Link>
           </nav>
         </div>
       </div>

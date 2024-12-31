@@ -24,19 +24,19 @@ interface ChartProps {
   chartData: ChartData[]
 }
 
-const chartData = [
-  { dimension: "dominancia", values: 275, fill: "var(--color-dominancia)" },
-  { dimension: "influencia", values: 200, fill: "var(--color-influencia)" },
-  { dimension: "estabilidade", values: 187, fill: "var(--color-estabilidade)" },
-  { dimension: "comformidade", values: 173, fill: "var(--color-comformidade)" },
-]
+// const chartData = [
+//   { dimension: "dominancia", values: 275, fill: "var(--color-dominancia)" },
+//   { dimension: "influencia", values: 200, fill: "var(--color-influencia)" },
+//   { dimension: "estabilidade", values: 187, fill: "var(--color-estabilidade)" },
+//   { dimension: "comformidade", values: 173, fill: "var(--color-comformidade)" },
+// ]
 
 const chartConfig = {
   values: {
     label: "Valores",
   },
   dominancia: {
-    label: "Dominancia",
+    label: "Dominância",
     color: "hsl(var(--chart-1))",
   },
   influencia: {
@@ -47,18 +47,26 @@ const chartConfig = {
     label: "Estabilidade",
     color: "hsl(var(--chart-3))",
   },
-  comformidade: {
+  conformidade: {
     label: "Comformidade",
     color: "hsl(var(--chart-4))",
   },
 } satisfies ChartConfig
 
-export function Chart() {
+
+export function Chart({ chartData }: ChartProps) {
+
+  const maxDimension = chartData.reduce((max, item) => {
+    return item.values > max.values ? item : max;
+  }, chartData[0])
+
+  const predominantValue = chartConfig[maxDimension.dimension as keyof typeof chartConfig]?.label;
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Mixed</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Distribuição de Resultados</CardTitle>
+        <CardDescription>Valores mostrado em porcentagem</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -84,20 +92,42 @@ export function Chart() {
             <XAxis dataKey="values" type="number" hide />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={
+                <ChartTooltipContent
+                  hideLabel
+                  formatter={(value, name, item, index) => (
+
+                    <>
+                      <div
+                        className="h-2.5 w-2.5 shrink-0 rounded-[2px] bg-[--color-bg]"
+                        style={{ backgroundColor: item.payload.fill }}
+                      />
+                      {chartConfig[name as keyof typeof chartConfig]?.label ||
+                        name}
+                      <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
+                        {value}
+                        <span className="font-normal text-muted-foreground">
+                          %
+                        </span>
+                      </div>
+                    </>
+                  )}
+                />
+              }
+              defaultIndex={1}
             />
             <Bar dataKey="values" layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+      {/* <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          {predominantValue} <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total values for the last 6 months
+        Fator predominante
         </div>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }
