@@ -11,7 +11,7 @@ const dimensionDescriptions = {
   dominancia: "A dominância reflete assertividade, tomada de decisão rápida e foco em resultados.",
   estabilidade: "A estabilidade indica uma tendência a manter a calma, ser consistente e valorizar harmonia.",
   influencia: "A influeência representa sociabilidade, entusiasmo e facilidade em influenciar pessoas.",
-  conformidade: "A comformidade demonstra atenção aos detalhes, disciplina e foco em regras e padrões."
+  conformidade: "A comformidade demonstra atenção aos detalhes, disciplina com foco em regras e padrões."
 };
 
 export function generateAnalysis(data: ChartData[]) {

@@ -11,10 +11,7 @@ import { useQuiz } from "@/contexts/QuizContext"
 export default function DiscTest() {
   const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(0)
 
-  // const { responses, setResponses } = useQuiz()
-  // const [responses, setResponses] = useState<string[]>([])
   const { responses, setResponses } = useQuiz()
-
 
   const router = useRouter()
 
@@ -61,17 +58,17 @@ export default function DiscTest() {
             </div>
 
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 gap-4">
-              {currentOption?.options.map((option) => (
-                <Button
-                  variant={"outline"}
-                  key={option.id}
-                  className={`p-9 cursor-pointer transition-all hover:border-primary `}
-                  onClick={() => handleSelectedOption(option.dimension)}
-                >
-                  {option.text}
-                </Button>
-              ))}
-
+              {currentOption?.options
+                .map((option) => (
+                  <Button
+                    variant={"outline"}
+                    key={option.id}
+                    className={`p-9 cursor-pointer transition-all hover:border-primary `}
+                    onClick={() => handleSelectedOption(option.dimension)}
+                  >
+                    {option.text}
+                  </Button>
+                ))}
             </div>
           </div>
         ) : (

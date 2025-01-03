@@ -36,7 +36,7 @@ export const About = () => {
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger className="text-lg font-semibold text-foreground">O que o teste pode me dizer?</AccordionTrigger>
-          <AccordionContent className="text-base">
+          <AccordionContent className="text-base space-y-2">
             <p>O teste DISC pode revelar:</p>
             <ul className="pl-4 list-disc">
               <li >Seu estilo de comunicação preferido: Entenda como você se expressa e interage com os outros.</li>
@@ -59,50 +59,6 @@ export const About = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
-      {/* <section className="space-y-2 text-gray-500 dark:text-gray-600">
-        <p>
-          O teste DISC é uma ferramenta poderosa para compreender características pessoais e tendências de
-          comportamento. Ele é amplamente utilizado em contextos pessoais e profissionais para identificar
-          estilos de comunicação, preferências e formas de interação.
-        </p>
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-foreground">O que é o Teste DISC?</h2>
-          <p>
-            O teste DISC é baseado em uma teoria comportamental que categoriza os perfis em quatro dimensões
-            principais: Dominância, Influência, Estabilidade e Conformidade. Cada dimensão reflete diferentes
-            aspectos da personalidade e comportamentos típicos.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-foreground">Como funciona?</h2>
-          <p>O teste é composto por perguntas simples e diretas que ajudam a mapear as suas respostas.
-            Com base nas suas escolhas, o teste gera um perfil comportamental detalhado que destaca seus
-            pontos fortes, tendências e áreas de melhoria.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-foreground">O que o teste pode me dizer?</h2>
-          <p>O teste DISC pode revelar:</p>
-          <ul className="pl-4 list-disc">
-            <li >Seu estilo de comunicação preferido: Entenda como você se expressa e interage com os outros.</li>
-            <li>Pontos fortes e desafios: Identifique as características que o tornam único e áreas que podem ser aprimoradas.</li>
-            <li>Adequação ao trabalho em equipe: Descubra como suas preferências comportamentais influenciam suas interações no ambiente profissional e pessoal.</li>
-          </ul>
-        </div>
-
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold text-foreground">Por que o Teste DISC é relevante hoje?</h2>
-          <p>O Teste DISC é uma ferramenta essencial para o autoconhecimento e melhoria das relações pessoais e
-            profissionais. Ele ajuda a identificar padrões de comportamento, melhorar a comunicação e
-            formar equipes mais eficientes.
-          </p>
-          <p>Em um mundo que exige flexibilidade e adaptação, o DISC oferece insights
-            práticos para lidar com desafios e maximizar potencial. Sua simplicidade e aplicabilidade
-            tornam-no indispensável para quem busca crescimento e conexão significativa nos dias de hoje.
-          </p>
-        </div>
-      </section> */}
     </section>
   )
 }

@@ -33,7 +33,7 @@ export default function Results() {
 
   return (
     <main className="w-full flex flex-col min-h-screen">
-      <Header />
+      <Header nav={false} />
 
       <section className="padding-y padding-x">
         <h1 className="text-2xl font-semibold tracking-tighter sm:text-3xl md:text-5xl lg:text-4xl/none">Resultados</h1>

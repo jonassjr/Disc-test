@@ -8,7 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 export default function Home() {
   return (
     <main className="w-full flex flex-col min-h-screen">
-      <Header />
+      <Header nav={true} />
       <section className="padding-x padding-y">
         <Hero />
       </section>
