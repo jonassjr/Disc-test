@@ -10,6 +10,7 @@ import { generateAnalysis } from "@/utils/generateAnalisys"
 import { TrendingUp } from "lucide-react"
 import { useQuiz } from "@/contexts/QuizContext"
 import { useEffect } from "react"
+import { ResultsPageSkeleton } from "@/components/ResultsPageSkeleton"
 
 export default function Results() {
 
@@ -34,26 +35,30 @@ export default function Results() {
       <section className="padding-y padding-x">
         <h1 className="text-2xl font-semibold tracking-tighter sm:text-3xl md:text-5xl lg:text-4xl/none">Resultados</h1>
 
-        <section className="mt-8 flex gap-12">
-          <div className=" w-[400px]">
-            <Chart chartData={data} />
-          </div>
-          <article className=" flex-1">
-            <header>
-              <div className="flex gap-2 items-center font-medium leading-none">
-                <p className="text-xl">{predominantNames}</p><TrendingUp className="h-4 w-4" />
-              </div>
-              <div className="leading-none text-muted-foreground">
-                {subtTitle}
-              </div>
-            </header>
-            <div className="space-y-2">
-              <p className="mt-4">{analysis}</p>
-              <p>{descriptions}</p>
+        {responses.length === 0 ? (
+          <ResultsPageSkeleton />
+        ) : (
+          <section className="mt-8 flex flex-col lg:flex-row gap-12">
+            <div className="w-full max-w-[400px]">
+              <Chart chartData={data} />
             </div>
-          </article>
-        </section>
-      </section>
-    </main>
+            <article className=" flex-1">
+              <header>
+                <div className="flex gap-2 items-center font-medium leading-none">
+                  <p className="text-xl">{predominantNames}</p><TrendingUp className="h-4 w-4" />
+                </div>
+                <div className="leading-none text-muted-foreground">
+                  {subtTitle}
+                </div>
+              </header>
+              <div className="space-y-2">
+                <p className="mt-4">{analysis}</p>
+                <p>{descriptions}</p>
+              </div>
+            </article>
+          </section>
+        )}
+      </section >
+    </main >
   )
 }
