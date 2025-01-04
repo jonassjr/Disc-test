@@ -26,11 +26,8 @@ const navLinks = [
   // },
 ]
 
-interface headerProps {
-  nav: boolean
-}
 
-export function Header({ nav }: headerProps) {
+export function Header() {
   const [toggle, setToggle] = useState(false)
 
   return (

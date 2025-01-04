@@ -14,9 +14,6 @@ export default function Results() {
 
   const { responses } = useQuiz()
 
-  // const storedData = sessionStorage.getItem('testResults')
-  // const responses = storedData ? JSON.parse(storedData) : null
-
   const router = useRouter()
 
   if (responses.length === 0) {
@@ -25,15 +22,13 @@ export default function Results() {
     )
   }
 
-  console.log(responses)
-
   const data = calculateResults(responses)
 
   const { analysis, predominantNames, descriptions, subtTitle } = generateAnalysis(data)
 
   return (
     <main className="w-full flex flex-col min-h-screen">
-      <Header nav={false} />
+      <Header />
 
       <section className="padding-y padding-x">
         <h1 className="text-2xl font-semibold tracking-tighter sm:text-3xl md:text-5xl lg:text-4xl/none">Resultados</h1>

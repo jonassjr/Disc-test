@@ -1,13 +1,11 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -23,13 +21,6 @@ import { ChartData } from "@/utils/calculateResult"
 interface ChartProps {
   chartData: ChartData[]
 }
-
-// const chartData = [
-//   { dimension: "dominancia", values: 275, fill: "var(--color-dominancia)" },
-//   { dimension: "influencia", values: 200, fill: "var(--color-influencia)" },
-//   { dimension: "estabilidade", values: 187, fill: "var(--color-estabilidade)" },
-//   { dimension: "comformidade", values: 173, fill: "var(--color-comformidade)" },
-// ]
 
 const chartConfig = {
   values: {
@@ -59,8 +50,6 @@ export function Chart({ chartData }: ChartProps) {
   const maxDimension = chartData.reduce((max, item) => {
     return item.values > max.values ? item : max;
   }, chartData[0])
-
-  const predominantValue = chartConfig[maxDimension.dimension as keyof typeof chartConfig]?.label;
 
   return (
     <Card>
@@ -95,7 +84,7 @@ export function Chart({ chartData }: ChartProps) {
               content={
                 <ChartTooltipContent
                   hideLabel
-                  formatter={(value, name, item, index) => (
+                  formatter={(value, name, item) => (
 
                     <>
                       <div
@@ -120,14 +109,6 @@ export function Chart({ chartData }: ChartProps) {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      {/* <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          {predominantValue} <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-        Fator predominante
-        </div>
-      </CardFooter> */}
     </Card>
   )
 }
