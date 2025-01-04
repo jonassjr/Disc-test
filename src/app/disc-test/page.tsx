@@ -11,7 +11,7 @@ import { useQuiz } from "@/contexts/QuizContext"
 export default function DiscTest() {
   const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(0)
 
-  const { responses, setResponses } = useQuiz()
+  const { setResponses } = useQuiz()
 
   const router = useRouter()
 
@@ -35,7 +35,7 @@ export default function DiscTest() {
       router.push("/results")
     }
 
-  }, [currentOptionIndex])
+  }, [currentOptionIndex, router])
 
   return (
     <main className="w-full min-h-screen grid place-content-center">

@@ -9,23 +9,19 @@ import { generateAnalysis } from "@/utils/generateAnalisys"
 
 import { TrendingUp } from "lucide-react"
 import { useQuiz } from "@/contexts/QuizContext"
+import { useEffect } from "react"
 
 export default function Results() {
 
   const { responses } = useQuiz()
 
-  // const storedData = sessionStorage.getItem('testResults')
-  // const responses = storedData ? JSON.parse(storedData) : null
-
   const router = useRouter()
 
-  if (responses.length === 0) {
-    return (
+  useEffect(() => {
+    if (responses.length === 0) {
       router.back()
-    )
-  }
-
-  console.log(responses)
+    }
+  }, [responses, router])
 
   const data = calculateResults(responses)
 
@@ -33,7 +29,7 @@ export default function Results() {
 
   return (
     <main className="w-full flex flex-col min-h-screen">
-      <Header nav={false} />
+      <Header />
 
       <section className="padding-y padding-x">
         <h1 className="text-2xl font-semibold tracking-tighter sm:text-3xl md:text-5xl lg:text-4xl/none">Resultados</h1>
