@@ -5,8 +5,9 @@ import { Progress } from "@/components/ui/progress"
 import { useEffect, useState } from "react"
 import { Questions, questions } from "./questions"
 import { useRouter } from "next/navigation"
-import { Loader2 } from "lucide-react"
 import { useQuiz } from "@/contexts/QuizContext"
+import { ResultsPageSkeleton } from "@/components/ResultsPageSkeleton"
+import { Header } from "@/components/Header"
 
 export default function DiscTest() {
   const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(0)
@@ -37,16 +38,18 @@ export default function DiscTest() {
 
   }, [currentOptionIndex, router])
 
-  return (
-    <main className="w-full min-h-screen grid place-content-center">
-      <section className="w-[800px] h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
-        <div className="space-y-2">
-          <div className="flex justify-between items-center text-sm text-muted-foreground">
-            <span>{currentOptionIndex}/{questions.length}</span>
+
+  if (currentOption) {
+    return (
+      <main className="w-full min-h-screen grid place-content-center p-4" >
+        <section className="max-w-[800px] md:h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center text-sm text-muted-foreground">
+              <span>{currentOptionIndex}/{questions.length}</span>
+            </div>
+            <Progress value={progress} className="h-2" />
           </div>
-          <Progress value={progress} className="h-2" />
-        </div>
-        {currentOption ? (
+
           <div className="space-y-12">
             <div className="space-y-1">
               <h1 className="text-2xl font-bold tracking-tight text-foreground">
@@ -71,21 +74,19 @@ export default function DiscTest() {
                 ))}
             </div>
           </div>
-        ) : (
-          <div className="space-y-12">
-            <div className="space-y-1">
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">
-                Gerando resultados!
-              </h1>
-              <p className="text-muted-foreground">Analisando seu perfil DISC...</p>
-            </div>
-
-            <div className="h-full grid place-content-center">
-              <Loader2 className="animate-spin 2s" size={36} />
-            </div>
-          </div>)
-        }
-      </section >
-    </main >
-  )
+        </section >
+      </main >
+    )
+  }
+  if (!currentOption) {
+    return (
+      <main className="w-full flex flex-col min-h-screen">
+        <Header />
+        <section className="padding-y padding-x">
+          <h1 className="text-2xl font-semibold tracking-tighter sm:text-3xl md:text-5xl lg:text-4xl/none">Resultados</h1>
+          <ResultsPageSkeleton />
+        </section>
+      </main >
+    )
+  }
 }
