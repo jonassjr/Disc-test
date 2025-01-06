@@ -42,7 +42,7 @@ export default function DiscTest() {
   if (currentOption) {
     return (
       <main className="w-full min-h-screen grid place-content-center p-4" >
-        <section className="max-w-[800px] md:h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
+        <section className="w-full min-[840px]:w-[800px] md:h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
           <div className="space-y-2">
             <div className="flex justify-between items-center text-sm text-muted-foreground">
               <span>{currentOptionIndex}/{questions.length}</span>
