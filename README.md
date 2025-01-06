@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Tete DISC
 
-## Getting Started
+O Teste DISC é um projeto desenvolvida em Next.js com o objetivo de fornecer uma solução gratuita e acessível para avaliação comportamental baseada no modelo DISC. Este projeto de código aberto permite que desenvolvedores e entusiastas explorem, personalizem e utilizem a ferramenta em diversos contextos, como empresas, projetos acadêmicos ou aplicações pessoais.
 
-First, run the development server:
+Com uma interface intuitiva e funcional, o sistema permite a aplicação de testes, cálculo de resultados e análise das dimensões comportamentais (Dominância, Influência, Estabilidade e Conformidade) de maneira simples e eficiente.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Principais recursos
+
+- Realize avaliações com base no modelo DISC, permitindo identificar os quatro principais perfis comportamentais: Dominância, Influência, Estabilidade e Conformidade.
+- Visualize os resultados das avaliações diretamente na página.
+- Código aberto, permitindo que desenvolvedores contribuam e personalizem o projeto de acordo com suas necessidades.
+
+## Tecnologias utilizadas
+
+[![My Skills](https://skillicons.dev/icons?i=ts,next,react,tailwind,npm,git)](https://skillicons.dev)
+
+## instalação
+
+
+- clone o repositorio
+  
+``` bash 
+  git clone https://github.com/jonassjr/Disc-test.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- instale as dependências
+``` bash
+  npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Execute o projeto
+``` bash
+  npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estrutura do projeto
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/app/disct-test`: Contem página do teste e questões.
+- `/app/results`: Contem página de resultados.
+- `/app/components`: Contem componentes reutilizáveis.
+- `/app/utils`: Contém utilitários, configurações ou funções auxiliares reutilizáveis em diferentes partes do projeto, como por exemplos:
+  calular o resultar e gerar análise.
+- `/app/context`: Contém gerenciamento de estado e compartilhamento de dados entre componentes. Essa pasta centraliza lógica de contexto, como controle do estado do teste DISC.
