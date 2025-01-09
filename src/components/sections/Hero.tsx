@@ -5,14 +5,13 @@ export const Hero = () => {
   return (
     <section className="max-w-[600px] flex flex-col gap-8 mx-auto row-start-2 items-center sm:items-start">
       <h1 className="text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-5xl/none">
-        Aprenda a se conhecer melhor com um teste de personalidade{" "}
+        Descubra mais sobre sua personalidade com um teste{" "}
         <span className="text-blue-500">gratuito</span> e de código
         aberto.
       </h1>
 
       <p className="mx-auto max-w-[450px] text-center text-gray-500 md:text-lg dark:text-gray-400">
-        O teste a seguir contém 40 questões que levam cerca de 5
-        minutos para serem concluídas.
+        Com 40 perguntas rápidas, você levará cerca de 5 minutos para completar e obter insights valiosos sobre si mesmo.
       </p>
 
       <div className="flex gap-4 self-center items-center flex-col sm:flex-row">
