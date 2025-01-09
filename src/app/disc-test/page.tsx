@@ -42,7 +42,7 @@ export default function DiscTest() {
   if (currentOption) {
     return (
       <main className="w-full min-h-screen grid place-content-center p-4" >
-        <section className="w-full min-[840px]:w-[800px] md:h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
+        <section className="w-full min-[840px]:w-[800px] min-[840px]:h-[500px] flex flex-col space-y-14 p-12 shadow border rounded-lg ">
           <div className="space-y-2">
             <div className="flex justify-between items-center text-sm text-muted-foreground">
               <span>{currentOptionIndex}/{questions.length}</span>
@@ -60,13 +60,13 @@ export default function DiscTest() {
               </p>
             </div>
 
-            <div className="pt-10 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="pt-10 grid grid-cols-1 min-[840px]:grid-cols-4 gap-4">
               {currentOption?.options
                 .map((option) => (
                   <Button
                     variant={"outline"}
                     key={option.id}
-                    className={`p-9 cursor-pointer transition-all hover:border-primary `}
+                    className={`p-9 cursor-pointer transition-all hover:bg-background min-[840px]:hover:border-primary min-[840px]:hover:bg-accent active:border-primary active:bg-accent active:text-accent-foreground`}
                     onClick={() => handleSelectedOption(option.dimension)}
                   >
                     {option.text}
