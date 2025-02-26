@@ -12,18 +12,6 @@ const navLinks = [
     name: 'Sobre',
     href: '/#about'
   }
-  // {
-  //   id: 2,
-  //   name: 'Resultado',
-  //   href: '#resultado'
-
-  // },
-  // {
-  //   id: 3,
-  //   name: 'Artigos',
-  //   href: '#artigos'
-
-  // },
 ]
 
 
