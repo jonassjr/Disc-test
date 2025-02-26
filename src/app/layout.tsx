@@ -41,9 +41,9 @@ export default function RootLayout({
           <QuizProvider>
             {children}
           </QuizProvider>
-          <Analytics mode="production" />;
+          <Analytics mode="production" />
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

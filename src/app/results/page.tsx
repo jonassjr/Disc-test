@@ -5,7 +5,7 @@ import { calculateResults } from "@/utils/calculateResult"
 import { useRouter } from "next/navigation"
 
 import { Chart } from "./_components/Chart"
-import { generateAnalysis } from "@/utils/generateAnalisys"
+import { generateAnalysis } from "@/utils/generateAnalysis"
 
 import { TrendingUp } from "lucide-react"
 import { useQuiz } from "@/contexts/QuizContext"
@@ -40,7 +40,7 @@ export default function Results() {
         ) : (
           <section className="mt-8 flex flex-col lg:flex-row gap-12">
             <div className="w-full max-w-[400px]">
-              <Chart chartData={data} />
+              <Chart chartData={data}/>
             </div>
             <article className=" flex-1">
               <header>

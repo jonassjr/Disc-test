@@ -13,7 +13,9 @@ export function calculateResults(responses: string[]): ChartData[] {
     C: { label: "conformidade", color: "var(--color-conformidade)" },
   }
 
-  const totalResponses = responses.length
+  const filteredResponses = responses.filter((r) => index[r as keyof typeof index])
+
+  const totalResponses = filteredResponses.length
 
   const counts: Record<string, number> = responses.reduce((acc, response) => {
     acc[response] = (acc[response] || 0) + 1

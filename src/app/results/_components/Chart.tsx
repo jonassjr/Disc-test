@@ -46,9 +46,9 @@ const chartConfig = {
 
 
 export function Chart({ chartData }: ChartProps) {
-
+  
   return (
-    <Card>
+    <Card data-testid="chart">
       <CardHeader>
         <CardTitle>Distribuição de Resultados</CardTitle>
         <CardDescription>Valores mostrado em porcentagem</CardDescription>
